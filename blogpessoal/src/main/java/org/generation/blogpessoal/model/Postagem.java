@@ -25,7 +25,7 @@ public class Postagem {
 	private String titulo; //criar titulo
 	
 	@NotNull
-	@Size(min=4, max=50) //define tamanho maximo e/ou minimo de caracteres do texto
+	@Size(min=4, max=500) //define tamanho maximo e/ou minimo de caracteres do texto
 	private String texto; //criar texto
 	
 	@UpdateTimestamp //pega a data e hora do computador e salva
