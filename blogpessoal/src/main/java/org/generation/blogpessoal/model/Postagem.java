@@ -6,11 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity //indica que a classe será uma entidade no DB
 @Table(name="tb_postagens") // essa anotação diz para criar uma tabela no DB/nomeia a tabela
@@ -31,9 +34,16 @@ public class Postagem {
 	@UpdateTimestamp //pega a data e hora do computador e salva
 	private LocalDateTime data; // criar data e hora, devemos importar o LocalDateTime
 
+	@ManyToOne//criando e definindo tipo de ligação que será feita na foreign key. Muitas postagens para um tema.
+	@JsonIgnoreProperties("postagem")/*anotação para não criar recursividade. Parârametro que será ignorado na classe Tema será postagem
+	                                   ou seja quando chegar em postagem irá parar de apresentar informações*/   
+	private Tema tema;//criando atributo para colocarmos as anotaçoes de relacionamento após a criacação de sua class
+	                    
+	
 	//Gerar os getters e setters no final.
 	// Botao direito mouse > Source > Generate Getters and Setters
 	
+
 	public Long getId() {
 		return id;
 	}
@@ -66,7 +76,13 @@ public class Postagem {
 		this.data = data;
 	}
 	
-	
+	public Tema getTema() {
+		return tema;
+	}
+
+	public void setTema(Tema tema) {
+		this.tema = tema;
+	}
 	
 }
 
