@@ -38,8 +38,11 @@ public class Postagem {
 	@JsonIgnoreProperties("postagem")/*anotação para não criar recursividade. Parârametro que será ignorado na classe Tema será postagem
 	                                   ou seja quando chegar em postagem irá parar de apresentar informações*/   
 	private Tema tema;//criando atributo para colocarmos as anotaçoes de relacionamento após a criacação de sua class
-	                    
 	
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")                                  
+	private Usuario usuario;
+
 	//Gerar os getters e setters no final.
 	// Botao direito mouse > Source > Generate Getters and Setters
 	
@@ -82,6 +85,14 @@ public class Postagem {
 
 	public void setTema(Tema tema) {
 		this.tema = tema;
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 }

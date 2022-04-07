@@ -2,12 +2,13 @@ package org.generation.blogpessoal.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.generation.blogpessoal.model.Postagem;
 import org.generation.blogpessoal.repository.PostagemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,7 +47,7 @@ public class PostagemController {
 	
 	
 	@PostMapping
-	public ResponseEntity<Postagem> postPostagem (@RequestBody Postagem postagem){//método que vai inserir/criar algum dado onde esse dado será pego pelo body(corpo da requisição). Posso usar postPostagem ou apenas post
+	public ResponseEntity<Postagem> postPostagem (@Valid @RequestBody Postagem postagem){//método que vai inserir/criar algum dado onde esse dado será pego pelo body(corpo da requisição). Posso usar postPostagem ou apenas post
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(repository.save(postagem));//Irá retornar o status CREATED e salvo a nossa requisição post
 	}
 	
