@@ -5,7 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.Optional;
 
 import org.generation.blogpessoal.model.Usuario;
+import org.generation.blogpessoal.repository.UsuarioRepository;
 import org.generation.blogpessoal.service.UsuarioService;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -37,6 +40,16 @@ public class UsuarioControllerTest {
 	  controlller, pois usamos o padrão Rest que utiliza os verbos e métodos HTTP -> GET-POST-PUT-DELETE*/
 	@Autowired
 	private TestRestTemplate testRestTemplate;
+	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
+	
+	@BeforeAll
+	void start(){
+
+		 //Apaga todos os registros do banco de dados antes de iniciar os testes
+		   usuarioRepository.deleteAll();
+	}   
 	
 	@Test
 	@Order(1)//indica que o método/teste será o primeiro a ser executado.
@@ -161,4 +174,8 @@ public class UsuarioControllerTest {
 		
 	}
 
+	@AfterAll
+	public void end() {
+		usuarioRepository.deleteAll();
+	}
 }

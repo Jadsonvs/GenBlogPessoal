@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.generation.blogpessoal.model.Usuario;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -29,6 +30,10 @@ public class UsuarioRepositoryTest {
 	do método .save() uma única vez(Lifecycle.PER_CLASS)*/
 	@BeforeAll
 	void start() {
+		
+		//Apaga todos os registros do banco de dados antes de iniciar os testes
+		 usuarioRepository.deleteAll();
+		 
 		
 		usuarioRepository.save(new Usuario(0L, "DJ Cleiton Rasta", "cleitinho@pedra.com", "cabecadegelo", "https://i.imgur.com/FETvs2O.jpg\r\n"));
 		
@@ -79,6 +84,9 @@ public class UsuarioRepositoryTest {
 		  método start(), os três testes serão Aprovados.*/
 	}
 	
-	
+	@AfterAll
+	public void end() {
+		usuarioRepository.deleteAll();
+	}
 	
 }
