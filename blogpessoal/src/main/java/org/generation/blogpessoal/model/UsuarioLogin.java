@@ -15,8 +15,6 @@ public class UsuarioLogin {
 	private String token;
 	
 	
-	
-	
 
 	public Long getId() {
 		return id;
