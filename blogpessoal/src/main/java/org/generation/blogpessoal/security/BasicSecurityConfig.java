@@ -39,7 +39,7 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override 
 	protected void configure(HttpSecurity http) throws Exception{ //Criar as rotas/endpoints que serão permitas ou não
 		
-		http.authorizeHttpRequests()// autoriração de requisição
+		http.authorizeRequests()// autoriração de requisição
 		.antMatchers("/usuarios/logar").permitAll()// codigo que escolhermos quais endpoints/caminhos iremos liberar
 		.antMatchers("/usuarios/cadastrar").permitAll()
 		.antMatchers(HttpMethod.OPTIONS).permitAll()
