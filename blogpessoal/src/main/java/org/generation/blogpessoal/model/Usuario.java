@@ -35,9 +35,11 @@ public class Usuario {
 	
 	private String foto;
 	
+	private String tipo;
+	
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
-	private List<Postagem> postagens;
+	private List<Postagem> postagem;
 //----------------------------------------------------------------------------------------------	
 	// ------ MÉTODOS CONSTRUTORES PARA TESTES ------
 	// ------ importante seguir a mesma ordem das declarações dos atributos do usuario------
@@ -97,12 +99,21 @@ public class Usuario {
 		this.foto = foto;
 	}
 	
-	public List<Postagem> getPostagens() {
-		return postagens;
+	
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setPostagens(List<Postagem> postagens) {
-		this.postagens = postagens;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public List<Postagem> getPostagem() {
+		return postagem;
+	}
+
+	public void setPostagem(List<Postagem> postagem) {
+		this.postagem = postagem;
 	}
 	
 }
