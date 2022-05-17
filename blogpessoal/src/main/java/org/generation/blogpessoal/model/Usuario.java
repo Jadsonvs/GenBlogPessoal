@@ -39,7 +39,7 @@ public class Usuario {
 	
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
-	private List<Postagem> postagem;
+	private List<Postagem> postagens;
 //----------------------------------------------------------------------------------------------	
 	// ------ MÉTODOS CONSTRUTORES PARA TESTES ------
 	// ------ importante seguir a mesma ordem das declarações dos atributos do usuario------
@@ -108,12 +108,12 @@ public class Usuario {
 		this.tipo = tipo;
 	}
 
-	public List<Postagem> getPostagem() {
-		return postagem;
+	public List<Postagem> getPostagens() {
+		return postagens;
 	}
 
-	public void setPostagem(List<Postagem> postagem) {
-		this.postagem = postagem;
+	public void setPostagens(List<Postagem> postagens) {
+		this.postagens = postagens;
 	}
 	
 }
